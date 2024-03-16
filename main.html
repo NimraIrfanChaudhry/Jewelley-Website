@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaudhry Jewellers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navigation">
+        <ul>
+            <li><a href="javascript:void(0);" id="homeLink">Home</a></li>
+            <li class="dropdown"><a href="javascript:void(0);">Gold</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Rings')">Rings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Earrings')">Earrings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Necklace')">Necklace</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Pendants')">Pendants</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Chains')">Chains</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Bangles')">Bangles</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Bracelets')">Bracelets</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gold', 'Nosepins')">Nosepins</a>
+                </div>
+            </li>
+            <li class="dropdown"><a href="javascript:void(1);">Silver</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Rings')">Rings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Earrings')">Earrings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Necklace')">Necklace</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Pendants')">Pendants</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Chains')">Chains</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Bangles')">Bangles</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Bracelets')">Bracelets</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Silver', 'Nosepins')">Nosepins</a>
+                </div>
+            </li>
+            <li class="dropdown"><a href="javascript:void(2);">Diamond</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Rings')">Rings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Earrings')">Earrings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Necklace')">Necklace</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Pendants')">Pendants</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Chains')">Chains</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Bangles')">Bangles</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Bracelets')">Bracelets</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Diamond', 'Nosepins')">Nosepins</a>
+                </div>
+            </li>
+            <li class="dropdown"><a href="javascript:void(3);">Men</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="showProductSection('Men', 'Rings')">Rings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Men', 'Bracelets')">Earrings</a>
+                </div>
+            </li>
+            <li class="dropdown"><a href="javascript:void(4);">Gems</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Rings')">Rings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Earrings')">Earrings</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Necklace')">Necklace</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Pendants')">Pendants</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Chains')">Chains</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Bangles')">Bangles</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Bracelets')">Bracelets</a>
+                    <a href="javascript:void(0);" onclick="showProductSection('Gems', 'Nosepins')">Nosepins</a>
+                </div>
+            </li>
+            <div class="search-cart">
+                <div class="search-icon">🔍</div>
+                <div class="cart-icon" id="cartIcon">🛒<span class="cart-count">0</span></div>
+
+            </div>
+            <button class="admin-button" onclick="location.href='login.html'">Admin</button>
+
+
+
+            <!-- Additional categories -->
+        </ul>
+    </nav>
+
+    <h2>Chaudhry Jewellers</h2>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="images/image2.jpg" alt="Jewellery Image 2">
+            <img src="images/image3.jpg" alt="Jewellery Image 3">
+            <img src="images/slidingcarousel2.png" alt="Jewellery Image 4">
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+
+    <div id="homeSection">
+        <div class="carousel"></div>
+        <div class="store-invitation">
+            <img src="images/shop2.jpg" alt="Islamabad Store" class="store-image">
+            <div class="store-info">
+                <h3>Visit Our Store</h3>
+                <p>View A Vast Collection Of Rings,Earrings,Pendants, Bangles, Bracelets & Necklaces.</p>
+            </div>
+        </div>
+        <!-- Store Address & Timing Section -->
+        <div class="store-info-section">
+            <div class="store-details">
+                <h3>Store Address & Timing</h3>
+                <p>Sarafa Bazar Rd, Sarafa Bazar, Shan Chan Chiragh, Rawalpindi, Punjab 46000, Pakistan<br>
+                    Rawalpindi, Pakistan<br>
+                    Mon - Sunday, 12pm - 8pm<br>
+                    Friday - Closed<br>
+                    <button class="directions-button"
+                        onclick="window.location='https://maps.google.com?q=Chaudhry+Jewellers';">Directions</button>
+            </div>
+            <div class="store-map">
+                <img src="images/map jewellery.JPG" alt="Map to Chaudhry Jewellers">
+            </div>
+        </div>
+    </div>
+    <div id="productSection" style="display: none;">
+        <h3 id="categoryHeading"></h3>
+        <div id="gallery" class="gallery"></div>
+    </div>
+    <footer class="footer-links"></footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        const firebaseConfig = {
+            // Your Firebase configuration
+            apiKey: "AIzaSyAHOMu6hhQ975WSTkVNNYShWXOXlb2HJyY",
+            authDomain: "jewellery-website-b7fb0.firebaseapp.com",
+            projectId: "jewellery-website-b7fb0",
+            storageBucket: "jewellery-website-b7fb0.appspot.com",
+            messagingSenderId: "1025146800261",
+            appId: "1:1025146800261:web:a9e594d77ab0498f8941ec",
+            measurementId: "G-2ZNWB7D219"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const firestore = getFirestore(app);
+        function showHomeSection() {
+            document.getElementById('homeSection').style.display = 'block';
+            document.getElementById('productSection').style.display = 'none';
+            document.querySelector('.carousel').style.display = 'block';
+        }
+        window.showProductSection = function (mainCategory, subCategory) {
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('productSection').style.display = 'block';
+            loadImages(mainCategory, subCategory);
+            document.querySelector('.carousel').style.display = 'none';
+
+            // Set the heading text
+            document.getElementById('categoryHeading').textContent = `${mainCategory} - ${subCategory}`;
+        }
+
+        async function loadImages(mainCategory, subCategory) {
+            const imagesCollection = collection(firestore, "images");
+            let q = query(imagesCollection, where("mainCategory", "==", mainCategory), where("subCategory", "==", subCategory));
+            const querySnapshot = await getDocs(q);
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const discountInfo = data.discountPrice ? `<p>Discounted Price: RS ${data.discountPrice}</p>` : '<p>No discount is currently available</p>';
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+          <a href="product-detail.html?productId=${doc.id}">
+            <img src="${data.url}" alt="${data.description}">
+          </a>
+          <div class="container">
+            <h4><b>${data.description}</b></h4>
+            <p>Price: RS ${data.price}</p>
+            ${discountInfo}
+          </div>`;
+                gallery.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            showHomeSection();
+            const images = document.querySelectorAll('.carousel-images img');
+            let currentImageIndex = 0;
+
+            // Function to go to the next image
+            function nextImage() {
+                images[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                images[currentImageIndex].classList.add('active');
+            }
+
+            // Automatically move to the next image after a few seconds
+            setInterval(nextImage, 3000); // Change 3000 to the number of milliseconds you want
+
+            // Initialize the first image
+            images[currentImageIndex].classList.add('active');
+            showHomeSection();
+        });
+        document.getElementById('homeLink').addEventListener('click', showHomeSection);
+        // Add event listener to the cart icon to navigate to the cart page
+        document.getElementById('cartIcon').addEventListener('click', () => {
+            window.location.href = 'cart.html'; // Change the window's location to cart.html
+        });
+
+    </script>
+    <script type="text/javascript">
+        // Function to update the cart count
+        function updateCartCount() {
+            // Assuming you're storing cart items in localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = cart.length; // Get the length of the cart
+            document.querySelector('.cart-count').textContent = cartCount; // Update the count in the DOM
+        }
+
+        // Function to add an item to the cart
+        function addToCart(item) {
+            // Retrieve cart from localStorage, or initialize as empty array if not found
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(item); // Add new item to cart
+            localStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart back to localStorage
+            updateCartCount(); // Update cart count displayed
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(itemIndex) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(itemIndex, 1); // Remove item at specified index
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount(); // Update cart count displayed
+        }
+
+        // Event listeners for add to cart buttons (you need to define these buttons in your HTML)
+        // The following are examples and should be adjusted according to your actual button IDs or classes
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const itemId = event.target.dataset.itemId; // Let's assume you store item ID in data attribute
+                addToCart({ id: itemId });
+            });
+        });
+
+        // When the DOM is fully loaded, update the cart count
+        document.addEventListener('DOMContentLoaded', (event) => {
+            updateCartCount();
+        });
+    </script>
+
+</body>
+<footer class="footer-links">
+    <a href="javascript:void(0);" class="infoLink" data-target="Lifetime Guarantee & After Sale ServiceInfo">Lifetime
+        Guarantee & After Sale
+        Service</a>
+    <a href="#">Why Patiala Diamonds?</a>
+    <a href="javascript:void(0);" class="infoLink" data-target="contactInfo">Contact Us</a>
+    <a href="javascript:void(0);" class="infoLink" data-target="returnPolicyInfo">Return Policy</a>
+    <a href="#">FAQs</a>
+    <div id="Lifetime Guarantee & After Sale ServiceInfo" class="infoContent" style="display: none;">
+        <h2>Lifetime Guarantee & After Sale Service</h2>
+        <p>At Chaudhry Jewewllers, when you invest in us, we invest in you. Our Jewellery Shop offers you all of</p>
+        <p>the care you and your jewellery require. Every purchase with Chaudhry Jewellers comes with a</p>
+        <p>lifetime guarantee and a certification of authenticity for all of our Jewellery products.</p>
+        <p>This delivers peace of mind that your Jewellery is among the best in the world.</p>
+        <h3>Purchasing Jewellery or other gemstones through Chaudhry Jewellers also gives you access to:</h3>
+        <p>Free Lifetime Resizing Of Rings. (Subject To Design)</p>
+        <p>Free Lifetime Jewellery Polishes & Repairs.</p>
+        <p>Free Lifetime Servicing Of Any Of Your Previous Purchases.</p>
+        <p>Purchasing your Fine Jewellery with Patiala Jewellers is more than just a one-time transaction. It</p>
+        <p>sets you up for a lifelong relationship with one of the best Jewellery Shops In Pakistan. </p>
+    </div>
+    <div id="contactInfo" class="infoContent" style="display: none;">
+        <h2>Contact Information</h2>
+        <p>Chaudhry Jewellers</p>
+        <p>Tel: (051) 8744 444</p>
+        <p>Email: info@chaudhryjewellers.com</p>
+        <h3>Location</h3>
+        <p>16, Ground Floor, Beverly Centre, Islamabad, Pakistan. 44000</p>
+    </div>
+    <div id="returnPolicyInfo" class="infoContent" style="display: none;">
+        <h2>Returns & Exchanges</h2>
+        <p>If your Diamond Engagement Rings, Diamond Necklace, or other purchases are not to your liking, Patiala
+            Diamonds is more than happy to buy back your previous item at a nominal deduction fee – specifically, 18% of
+            the product’s listed price. Alternatively, if you’re interested in exchanging a purchase for a more
+            up-to-date or trend-setting version, Patiala Diamonds will ensure your needs are met.</p>
+        <p>As one of the best Jewellery Shops In Islamabad, Patiala Diamonds is dedicated to ensuring your complete
+            satisfaction with the pieces you buy. Whether they’re conducted through the Online Jewellery Shop or in
+            person, we offer you as much security and flexibility as possible.</p>
+        <p>With both a buy-back policy and the opportunity to upgrade your purchase at any point in time, you can better
+            enjoy the items you select.</p>
+    </div>
+    <script>
+        document.getElementById('Lifetime Guarantee & After Sale ServiceLink').addEventListener('click', function () {
+            var contactInfo = document.getElementById('Lifetime Guarantee & After Sale ServiceInfo');
+            if (contactInfo.style.display === 'none') {
+                contactInfo.style.display = 'block';
+            } else {
+                contactInfo.style.display = 'none';
+            }
+        });
+
+        document.getElementById('contactLink').addEventListener('click', function () {
+            var contactInfo = document.getElementById('contactInfo');
+            if (contactInfo.style.display === 'none') {
+                contactInfo.style.display = 'block';
+            } else {
+                contactInfo.style.display = 'none';
+            }
+        });
+        document.getElementById('returnPolicyLink').addEventListener('click', function () {
+            var returnPolicyInfo = document.getElementById('returnPolicyInfo');
+            if (returnPolicyInfo.style.display === 'none') {
+                returnPolicyInfo.style.display = 'block';
+            } else {
+                returnPolicyInfo.style.display = 'none';
+            }
+        });
+
+    </script>
+    <script>
+        // Function to hide all content sections
+        function hideAllInfoContent() {
+            document.querySelectorAll('.infoContent').forEach(function (content) {
+                content.style.display = 'none';
+            });
+        }
+
+        // Function to show the clicked content section
+        function showInfoContent(contentId) {
+            hideAllInfoContent(); // First, hide all content sections
+            document.getElementById(contentId).style.display = 'block'; // Then show the desired one
+        }
+
+        // Event listener for all links
+        document.querySelectorAll('.infoLink').forEach(function (link) {
+            link.addEventListener('click', function () {
+                var contentId = this.getAttribute('data-target');
+                showInfoContent(contentId); // Show the content for the clicked link
+            });
+        });
+
+    </script>
+
+</footer>
+
+</html>

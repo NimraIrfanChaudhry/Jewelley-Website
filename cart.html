@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <h2>Your Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <button onclick="checkout()">Checkout</button>
+    <script>
+        function loadCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartHtml = '<table><tr><th>Image</th><th>Description</th><th>Price</th><th>Quantity</th><th>Total</th><th>Action</th></tr>';
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                const total = item.price * item.quantity;
+                grandTotal += total;
+                cartHtml += `<tr>
+                                <td><img src="${item.url}" alt="Item image" style="width: 100px;"></td>
+                                <td>${item.description}</td>
+                                <td>Rs: ${item.price}</td>
+                                <td>${item.quantity}</td>
+                                <td>Rs: ${total}</td>
+                                <td><button onclick="deleteItem(${index})">Delete</button></td>
+                             </tr>`;
+            });
+
+            cartHtml += `<tr><td colspan="5"><strong>Grand Total</strong></td><td><strong>Rs: ${grandTotal}</strong></td></tr></table>`;
+            document.getElementById('cartItems').innerHTML = cartHtml;
+        }
+
+        function deleteItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove the item at the specified index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update the cart in localStorage
+            loadCartItems(); // Reload the cart items
+        }
+
+        function checkout() {
+            
+            window.location.href = 'checkout.html';
+        }
+
+        loadCartItems();
+    </script>
+</body>
+</html>

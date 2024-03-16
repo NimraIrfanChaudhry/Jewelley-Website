@@ -1,0 +1,380 @@
+body {
+    font-family: 'Times New Roman', serif; /* Change the font to Times New Roman for a more classic look */
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+.admin-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    width: 300px;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.container {
+    padding: 15px;
+    text-align: center;
+}
+
+.container h4 {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+.container p {
+    margin: 0;
+    color: #888;
+    font-size: 16px;
+}
+
+.new-arrival {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+/* Navigation Bar Styles */
+.navigation {
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
+    color: #d4af37; /* Gold color text */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation ul li a {
+    color: #d4af37; /* Gold color links */
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+    font-weight: bold; /* Make the font bold */
+}
+
+.navigation ul li a:hover {
+    color: #fff; /* White color on hover */
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-icon, .cart-icon {
+    cursor: pointer;
+}
+
+.cart-count {
+    background-color: red;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    margin-left: 5px;
+    position: relative;
+    top: -10px;
+    right: -10px;
+}
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+    position: relative; /* Needed for positioning the images absolutely inside */
+}
+
+.carousel-images {
+    height: 700px; /* Set the maximum height you want here */
+    position: relative;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will cover the area, potentially cropping the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s ease-in-out;
+    display: none;
+}
+
+.carousel-images img.active {
+    display: block;
+    opacity: 1;
+}
+.top-bar {
+    background-color: #000; /* Adjust the color to match your design */
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 14px;
+}
+h2 {
+    text-align: center;
+    color: #d4af37; /* Gold color text */
+    font-size: 48px; /* Larger font size */
+    margin: 20px 0;
+    font-family: 'Times New Roman', serif; /* Elegant font-type */
+}
+.navigation .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navigation .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.navigation .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.navigation .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.navigation .dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Footer styles */
+.footer-links {
+    background-color: #f8f8f8; /* Light grey background */
+    padding: 20px 0; /* Padding above and below the links */
+    text-align: center; /* Center-align the link text */
+    border-top: 1px solid #e1e1e1; /* A subtle top border */
+}
+
+.footer-links a {
+    display: inline-block; /* Display links inline-block for proper spacing */
+    margin: 0 15px; /* Add horizontal spacing between links */
+    padding: 8px 0; /* Padding above and below the link text */
+    font-size: 16px; /* Set the font size for the links */
+    color: #333; /* Dark text for the links */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease; /* Transition for hover effect */
+}
+
+.footer-links a:hover {
+    color: #007bff; /* Change link color on hover */
+}
+
+/* If you have a very wide page, you might want to constrain the width of the footer content */
+@media (min-width: 768px) {
+    .footer-links {
+        width: 80%;
+        max-width: 1140px; /* Max width can be adjusted as needed */
+        margin: auto; /* Center the footer content */
+    }
+}
+#contactLink {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #007bff;
+}
+
+#contactInfo {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#contactInfo h2,
+#contactInfo h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#contactInfo p {
+    color: #555;
+    line-height: 1.6;
+}
+#returnPolicyLink {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #007bff;
+}
+
+#returnPolicyInfo {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#returnPolicyInfo h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#returnPolicyInfo p {
+    color: #555;
+    line-height: 1.6;
+}
+.store-invitation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; /* Adjust as necessary */
+    padding: 20px;
+    background-color: #f8f8f8; /* Light background for the section */
+}
+
+.store-image {
+    max-width: 50%; /* Adjust the size as necessary */
+    height: auto;
+    margin-right: 20px; /* Space between image and text */
+}
+
+.store-info {
+    max-width: 50%;
+}
+
+.store-info h3 {
+    margin-bottom: 10px;
+    font-size: 24px; /* Large font size for the title */
+    color: #333; /* Dark color for the text */
+}
+
+.store-info p {
+    font-size: 18px; /* Readable font size for the description */
+}
+.store-info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.store-details {
+    flex-basis: 50%;
+}
+
+.store-details h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.store-details p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.directions-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.directions-button:hover {
+    background-color: #555;
+}
+
+.store-map {
+    flex-basis: 50%;
+}
+
+.store-map img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .store-info-section {
+        flex-direction: column;
+    }
+
+    .store-details,
+    .store-map {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .store-map img {
+        margin-top: 20px;
+    }
+}
+#categoryHeading {
+    text-align: center; /* Centers the text horizontally */
+    margin: 30px 0; /* Adds top and bottom spacing */
+    padding: 10px; /* Adds padding inside the heading for a better visual effect */
+    font-size: 2em; /* Sets a larger font size for prominence */
+    color: #4A4A4A; /* A darker shade of gray for better readability */
+    font-weight: 600; /* Slightly bolder font without being too heavy */
+    letter-spacing: 1px; /* Adds spacing between characters for a refined look */
+    text-transform: uppercase; /* Uppercase letters for stylistic preference */
+    border-bottom: 3px solid #E5E5E5; /* A light bottom border to underline the heading */
+    display: inline-block; /* Makes the border length match the text length */
+    margin-bottom: 50px; /* Additional bottom margin to separate from content below */
+    background-color: #FFF; /* A white background to stand out from other elements */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    border-radius: 5px; /* Rounds the corners for a softer look */
+    transition: all 0.3s ease; /* Adds a transition effect on hover */
+}
+
+/* Add a hover effect to the category heading for interactivity */
+#categoryHeading:hover {
+    color: #5B5B5B; /* Darkens the text color slightly on hover */
+    border-color: #CCCCCC; /* Darkens the border color slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Increases the shadow for a "lifted" effect */
+}
+

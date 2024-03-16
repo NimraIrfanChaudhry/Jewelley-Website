@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h2 {
+    color: #444;
+}
+
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #0275d8;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Makes sure padding doesn't affect width */
+}
+
+button {
+    background-color: #d4af37;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d4af37;
+}
+
+#itemsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#itemsTable th, 
+#itemsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#itemsTable th {
+    background-color: #f7f7f7;
+}
+
+#itemsTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#itemsTable tr:hover {
+    background-color: #e8e8e8;
+}
+
+/* Hide sections initially */
+#addItemsSection,
+#detailsSection {
+    display: none;
+}
+
+/* Show sections when active */
+#addItemsSection.active,
+#detailsSection.active {
+    display: block;
+}
+
+/* Image styles */
+img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Button styles for 'Update' and other actions */
+#itemsTable button {
+    padding: 5px 10px;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#itemsTable button:hover {
+    background-color: #d4af37;
+}
+
+@media (max-width: 768px) {
+    .navigation li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+/* Container for Discount Buttons */
+#discountButtons {
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 10px; /* Space between buttons */
+}
+
+/* Styling for Discount Buttons */
+.discountButton {
+    background-color: #d4af37; /* Blue background */
+    color: white; /* White text */
+    padding: 8px 16px; /* Padding for smaller width */
+    font-size: 14px; /* Font size */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor changes to a pointer on hover */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background color on hover */
+    width: 150px; /* Set a fixed width for all buttons */
+    text-align: center; /* Center text inside the button */
+}
+
+.discountButton:hover {
+    background-color: #d4af37; /* Darker shade of blue on hover */
+}

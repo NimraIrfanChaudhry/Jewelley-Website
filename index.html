@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="indexstyle.css">
+</head>
+
+<body>
+    <h2>Chaudhry Jewellers</h2>
+
+    <!-- Navigation for different sections -->
+    <nav class="navigation">
+        <ul>
+            <li><a href="#" id="addItemsTab">Add Items</a></li>
+            <li><a href="#" id="detailsTab">Details</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section for adding items -->
+    <div id="addItemsSection" style="display: none;">
+        <label>Image</label>
+        <input type="file" id="imageUpload">
+        <br><br>
+
+        <label>Description</label>
+        <input type="text" id="imageDescription">
+        <br><br>
+
+        <label>Price</label>
+        <input type="number" id="priceInput">
+        <br><br>
+
+        <label>Main Category</label>
+        <select id="mainCategorySelect">
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Men">Men</option>
+            <option value="Gems">Gems</option>
+        </select>
+        <br><br>
+
+        <label>Subcategory</label>
+        <select id="subcategorySelect">
+            <!-- Subcategory options will be loaded here -->
+        </select>
+        <br><br>
+
+        <button id="uploadButton">Upload</button>
+        <br><br>
+    </div>
+
+    <!-- Section for details -->
+    <div id="detailsSection" style="display: none;">
+        <div id="discountButtons">
+            <button class="discountButton" data-discount="10">10% Discount</button>
+            <button class="discountButton" data-discount="20">20% Discount</button>
+            <button class="discountButton" data-discount="30">30% Discount</button>
+            <button class="discountButton" data-discount="40">40% Discount</button>
+            <button class="discountButton" data-discount="50">50% Discount</button>
+            <button class="discountButton" data-discount="60">60% Discount</button>
+            <button class="discountButton" data-discount="70">70% Discount</button>
+            <button id="removeDiscountsButton">Remove All Discounts</button>
+        </div>
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Main Category</th>
+                    <th>Subcategory</th>
+                    <th>Actions</th>
+                    <th>Discount Price</th> <!-- New Column for Discounted Price -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Items will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc, query, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { deleteField } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            // Your Firebase configuration
+            apiKey: "AIzaSyAHOMu6hhQ975WSTkVNNYShWXOXlb2HJyY",
+            authDomain: "jewellery-website-b7fb0.firebaseapp.com",
+            databaseURL: "https://jewellery-website-b7fb0-default-rtdb.firebaseio.com",
+            projectId: "jewellery-website-b7fb0",
+            storageBucket: "jewellery-website-b7fb0.appspot.com",
+            messagingSenderId: "1025146800261",
+            appId: "1:1025146800261:web:a9e594d77ab0498f8941ec",
+            measurementId: "G-2ZNWB7D219"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        const firestore = getFirestore(app);
+
+        const mainCategorySelect = document.getElementById('mainCategorySelect');
+        const subcategorySelect = document.getElementById('subcategorySelect');
+
+        const subcategories = {
+            'Gold': ['Rings', 'Earrings', 'Necklace', 'Pendants', 'Chains', 'Bangles', 'Bracelets', 'Nosepins'],
+            'Silver': ['Rings', 'Earrings', 'Necklace', 'Pendants', 'Chains', 'Bangles', 'Bracelets', 'Nosepins'],
+            'Diamond': ['Rings', 'Earrings', 'Necklace', 'Pendants', 'Chains', 'Bangles', 'Bracelets', 'Nosepins'],
+            'Men': ['Rings', 'Bracelets'],
+            'Gems': ['Rings', 'Earrings', 'Necklace', 'Pendants', 'Chains', 'Bangles', 'Bracelets', 'Nosepins']
+        };
+
+        function updateSubcategories() {
+            const selectedCategory = mainCategorySelect.value;
+            subcategorySelect.innerHTML = subcategories[selectedCategory].map(subcategory => `<option value="${subcategory}">${subcategory}</option>`).join('');
+        }
+
+        mainCategorySelect.addEventListener('change', updateSubcategories);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSubcategories();
+            document.getElementById('uploadButton').addEventListener('click', async () => {
+                const imageUpload = document.getElementById('imageUpload').files[0];
+                const imageDescription = document.getElementById('imageDescription').value;
+                const priceInput = document.getElementById('priceInput').value;
+                const mainCategory = document.getElementById('mainCategorySelect').value;
+                const subCategory = document.getElementById('subcategorySelect').value;
+                if (!imageUpload || !imageDescription || !priceInput) {
+                    alert('All fields are required.');
+                    return;
+                }
+                const storageRef = sRef(storage, `images/${imageUpload.name}`);
+                try {
+                    const snapshot = await uploadBytes(storageRef, imageUpload);
+                    const url = await getDownloadURL(snapshot.ref);
+                    await addDoc(collection(firestore, "images"), {
+                        url,
+                        description: imageDescription,
+                        price: Number(priceInput),
+                        mainCategory,  // This will store the main category
+                        subCategory   // This will store the subcategory
+                    });
+                    alert('Image uploaded successfully.');
+                } catch (error) {
+                    console.error("Error uploading image: ", error);
+                    alert('Error uploading image.');
+                }
+            });
+        });
+
+        async function displayItems() {
+            const itemsTableBody = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];
+            itemsTableBody.innerHTML = ''; // Clear the table for a fresh display
+
+            const querySnapshot = await getDocs(collection(firestore, "images"));
+            querySnapshot.forEach((doc) => {
+                const item = doc.data();
+                const row = itemsTableBody.insertRow();
+                const imgCell = row.insertCell(0);
+                const img = document.createElement('img');
+                img.src = item.url;
+                img.style.width = '100px'; // Adjust size as needed
+                imgCell.appendChild(img);
+
+                const descriptionCell = row.insertCell(1);
+                descriptionCell.textContent = item.description;
+
+                const priceCell = row.insertCell(2);
+                priceCell.textContent = item.price;
+
+                const mainCategoryCell = row.insertCell(3);
+                mainCategoryCell.textContent = item.mainCategory;
+
+                const subCategoryCell = row.insertCell(4);
+                subCategoryCell.textContent = item.subCategory;
+
+                // Add an Update button
+                const updateCell = row.insertCell(5);
+                const updateButton = document.createElement('button');
+                updateButton.textContent = 'Update';
+                updateButton.setAttribute('data-id', doc.id); // Use Firestore document ID
+                updateButton.onclick = () => handleUpdate(doc.id, row); // Add onclick event
+                updateCell.appendChild(updateButton);
+                const discountPriceCell = row.insertCell(6); // Assuming index 6 is for discount prices
+
+                // Check if discountPrice exists and is a number; if not, display "No Discount Available"
+                if (typeof item.discountPrice === 'number') {
+                    discountPriceCell.textContent = item.discountPrice.toFixed(2);
+                } else {
+                    discountPriceCell.textContent = "No Discount Available";
+                }
+
+            });
+        }
+
+        document.querySelectorAll('.discountButton').forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Get the discount percentage as an integer from the button's data attribute
+                const discountPercentage = parseInt(event.target.getAttribute('data-discount'), 10);
+                // Call applyDiscount with the correct percentage
+                applyDiscount(discountPercentage).then(() => {
+                    alert(`Applied ${discountPercentage}% Discount`);
+                }).catch((error) => {
+                    console.error("Error applying discount:", error);
+                    alert("Failed to apply discount");
+                });
+            });
+        });
+
+        async function applyDiscount(discountPercentage) {
+            const itemsCollectionRef = collection(firestore, "images");
+            const querySnapshot = await getDocs(itemsCollectionRef);
+
+            querySnapshot.forEach(async (doc) => {
+                const item = doc.data();
+                // Ensure originalPrice is treated as a number for calculation
+                const originalPrice = Number(item.price);
+                // Correctly calculate discount: convert percentage to decimal for the operation
+                const discountPrice = originalPrice * (1 - (discountPercentage / 100));
+
+                // Update Firestore document with the calculated discountPrice
+                await updateDoc(doc.ref, {
+                    discountPrice: discountPrice // Store the calculated discount price
+                });
+            });
+
+            // Refresh the display to show the updated discount prices
+            // Using setTimeout to allow for Firestore update latency
+            setTimeout(() => displayItems(), 1000);
+        }
+
+
+        async function removeAllDiscounts() {
+            const itemsCollectionRef = collection(firestore, "images");
+            const querySnapshot = await getDocs(itemsCollectionRef);
+
+            querySnapshot.forEach(async (doc) => {
+                await updateDoc(doc.ref, {
+                    discountPrice: deleteField() // Use the imported deleteField function
+                });
+            });
+
+            // Refresh the display after a short delay to allow Firestore changes to propagate
+            setTimeout(() => displayItems(), 1000);
+        }
+        document.getElementById('removeDiscountsButton').addEventListener('click', removeAllDiscounts);
+
+
+        async function handleUpdate(docId, row) {
+            const newDescription = prompt("Enter new description:");
+            const newPrice = prompt("Enter new price:");
+            if (newDescription == null || newPrice == null) {
+                alert("Update cancelled or invalid input.");
+                return;
+            }
+
+            const itemDocRef = doc(firestore, "images", docId);
+            try {
+                await updateDoc(itemDocRef, {
+                    description: newDescription,
+                    price: Number(newPrice),
+                });
+
+                row.cells[1].textContent = newDescription;
+                row.cells[2].textContent = newPrice;
+
+                alert('Item updated successfully.');
+            } catch (error) {
+                console.error("Error updating item: ", error);
+                alert('Error updating item.');
+            }
+        }
+
+        function showAddItems() {
+            document.getElementById('addItemsSection').style.display = 'block';
+            document.getElementById('detailsSection').style.display = 'none';
+        }
+
+        function showDetails() {
+            document.getElementById('addItemsSection').style.display = 'none';
+            document.getElementById('detailsSection').style.display = 'block';
+            displayItems(); // Fetch and display items
+        }
+
+        document.getElementById('addItemsTab').addEventListener('click', (event) => {
+            event.preventDefault();
+            showAddItems();
+        });
+
+        document.getElementById('detailsTab').addEventListener('click', (event) => {
+            event.preventDefault();
+            showDetails();
+        });
+    </script>
+</body>
+
+</html>

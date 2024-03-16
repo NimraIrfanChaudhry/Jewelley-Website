@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-form">
+        <h2>Admin Login</h2>
+        <input type="email" id="adminEmail" placeholder="Enter Email">
+        <input type="password" id="adminPassword" placeholder="Enter Password">
+        <button id="loginBtn">Login</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        
+        const firebaseConfig = {
+            // Your Firebase configuration
+            apiKey: "AIzaSyAHOMu6hhQ975WSTkVNNYShWXOXlb2HJyY",
+            authDomain: "jewellery-website-b7fb0.firebaseapp.com",
+            databaseURL: "https://jewellery-website-b7fb0-default-rtdb.firebaseio.com",
+            projectId: "jewellery-website-b7fb0",
+            storageBucket: "jewellery-website-b7fb0.appspot.com",
+            messagingSenderId: "1025146800261",
+            appId: "1:1025146800261:web:a9e594d77ab0498f8941ec",
+            measurementId: "G-2ZNWB7D219"
+        };
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById('loginBtn').addEventListener('click', () => {
+    const email = document.getElementById('adminEmail').value;
+    const password = document.getElementById('adminPassword').value;
+
+    // Hardcoded admin credentials
+    const hardcodedEmail = "chaudhry@gmail.com"; // Replace with your admin email
+    const hardcodedPassword = "123456";    // Replace with your admin password
+
+    if (email === hardcodedEmail && password === hardcodedPassword) {
+        // Credentials are correct, redirect to the main page
+        window.location.href = 'index.html'; // Replace with the path to your main admin page
+    } else {
+        // Credentials are incorrect, handle the error
+        alert("Incorrect email or password. Please try again.");
+    }
+});
+
+    </script>
+</body>
+</html>

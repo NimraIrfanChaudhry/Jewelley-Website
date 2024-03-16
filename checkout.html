@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Patiala Diamonds</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="checkout-wrapper">
+        <!-- Left Section: Contact and Delivery Details -->
+        <div class="checkout-left">
+            <h2>Chaudhry Jewellery</h2>
+            <form id="checkout-form">
+                <section class="contact-info">
+                    <h3>Contact</h3>
+                    <input type="email" placeholder="Email" required>
+                    <div class="checkbox">
+                        <input type="checkbox" id="offers-checkbox">
+                        <label for="offers-checkbox">Email me with news and offers</label>
+                    </div>
+                </section>
+
+                <section class="delivery-info">
+                    <h3>Delivery</h3>
+                    <select name="country" required>
+                        <option value="">Country/Region</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <!-- Add other countries as needed -->
+                    </select>
+                    <input type="text" placeholder="First name" required>
+                    <input type="text" placeholder="Last name" required>
+                    <!-- Add other fields as needed -->
+                </section>
+
+                <!-- More sections for additional information -->
+
+                <section class="payment-info">
+                    <h3>Payment</h3>
+                    <p>All transactions are secure and encrypted.</p>
+                    <!-- Add payment fields and options -->
+                </section>
+
+                <input type="submit" value="Complete order" class="complete-order-btn">
+            </form>
+        </div>
+
+        <!-- Right Section: Order Summary -->
+        <!-- Right Section: Order Summary -->
+        <div class="checkout-right">
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="summary-items">
+                    <!-- Items will be inserted here by JavaScript -->
+                </div>
+                <div class="summary-total">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-shipping">
+                    <span>Shipping</span>
+                    <span id="shipping">$0.00</span>
+                </div>
+                <div class="summary-grand-total">
+                    <strong>Total</strong>
+                    <strong id="grand-total">$0.00</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="checkout.js"></script>
+    <script>
+function loadOrderSummary() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+    let shipping = 10; // Flat rate shipping for this example
+    let summaryItemsHtml = '';
+
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+        summaryItemsHtml += `
+            <div class="summary-item">
+                <img src="${item.url}" alt="${item.description}" class="item-image">
+                <span class="item-description">${item.description}</span>
+                <span class="item-quantity">Qty: ${item.quantity}</span>
+                <span class="item-price">$${item.price.toFixed(2)}</span>
+                <span class="item-total">$${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+        `;
+    });
+
+    const grandTotal = subtotal + shipping;
+    document.getElementById('summary-items').innerHTML = summaryItemsHtml;
+    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+    document.getElementById('grand-total').textContent = `$${grandTotal.toFixed(2)}`;
+}
+
+loadOrderSummary();
+
+    </script>
+</body>
+</html>
